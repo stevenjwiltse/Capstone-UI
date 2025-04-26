@@ -1331,6 +1331,8 @@ export type RootHealthzGetResponses = {
     200: unknown;
 };
 
+
 export type ClientOptions = {
-    baseUrl: 'http://localhost:8000' | (string & {});
+    //baseUrl: 'http://localhost:8000' | (string & {});
+    baseUrl: 'http://3.138.51.64' | (string & {});
 };

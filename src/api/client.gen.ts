@@ -13,6 +13,9 @@ import { type Config, type ClientOptions as DefaultClientOptions, createClient, 
  */
 export type CreateClientConfig<T extends DefaultClientOptions = ClientOptions> = (override?: Config<DefaultClientOptions & T>) => Config<Required<DefaultClientOptions> & T>;
 
+// Hardcoded production URL
 export const client = createClient(createConfig<ClientOptions>({
-    baseUrl: 'http://localhost:8000'
+    //baseUrl: 'http://localhost:8000'
+    baseUrl: 'http://3.138.51.64',
 }));
+

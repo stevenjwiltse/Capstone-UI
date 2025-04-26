@@ -12,6 +12,8 @@ export interface UserOption {
   roles: string[];
 }
 
+const BASE_API_URL = import.meta.env.VITE_BACKEND_URL;
+
 export function useUserSearch(
   query: string,
   page: number = 1,
@@ -31,7 +33,7 @@ export function useUserSearch(
         }
         setLoading(true);
         try {
-          const url = new URL(`http://localhost:8000/api/v1/users/search`);
+          const url = new URL(`${BASE_API_URL}/v1/users/search`);
           url.searchParams.set('q', q);
           url.searchParams.set('page', String(page));
           url.searchParams.set('limit', String(limit));
