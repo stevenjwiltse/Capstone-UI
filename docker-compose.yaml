@@ -1,21 +1,14 @@
 services:
   barber-shop-ui:
-    image: caddy:latest
-    container_name: barber-shop-ui
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./frontend-dist:/srv/frontend-dist
-      - caddy_data:/data
-      - caddy_config:/config
-    environment:
-      - CADDYFILE_CONTENTS=${CADDYFILE_CONTENTS}
-    command: |
-      caddy file-server --root /srv/frontend-dist --listen :80
-    networks:
-      - barber-shop-network
-    restart: unless-stopped
+  build:
+    context: ./ui 
+    dockerfile: Dockerfile
+  container_name: barber-shop-ui
+  ports:
+    - "80:80"
+  networks:
+    - barber-shop-network
+  restart: unless-stopped
 
 volumes:
   caddy_data:
