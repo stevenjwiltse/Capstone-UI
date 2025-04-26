@@ -124,7 +124,7 @@ const Booking = () => {
     }
   };
 
-  const handleServiceChange = async (event: SelectChangeEvent) => {
+  const handleServiceChange = (event: SelectChangeEvent<string[]>) => { // <-- Updated to match line 345
     const {
       target: { value },
     } = event;
@@ -339,13 +339,13 @@ const Booking = () => {
                   <CircularProgress />
                 ) : (<FormControl fullWidth>
                   <InputLabel id="services-select-label">Select service(s)</InputLabel>
-                  <Select
+                  <Select<string[]>
                     labelId="services-select-label"
                     id="services-select"
-                    multiple
-                    value={selectedServices} // Not sure why this is typing is not working
+                    multiple //< -- Multiple requires an array
+                    value={selectedServices}
                     label="Select service(s)"
-                    onChange={(e: SelectChangeEvent) => handleServiceChange(e)}
+                    onChange={(e: SelectChangeEvent<string[]>) => handleServiceChange(e)}
                     input={<OutlinedInput label="Select service(s)" />}
                   >
                     {services.map((service) => (
